@@ -128,6 +128,11 @@ class DMCEnv(gym.Env):
         if self.from_pixels:
             obs['pixels'] = self._get_obs_pixels()
 
+        if gym.__version__ == '0.26.1': 
+            self.episode_time += 1
+            trunction = (self.episode_time >= self._spec.max_episode_steps)
+            
+            return obs, reward, done, trunction, {}
         return obs, reward, done, dict(sim_state=sim_state)
 
     def _get_obs(self):
@@ -144,7 +149,10 @@ class DMCEnv(gym.Env):
 
         if self.from_pixels:
             obs['pixels'] = self._get_obs_pixels()
-
+        
+        if gym.__version__ == '0.26.1': 
+            self.episode_time = 0
+            return obs, {}
         return obs
 
     def render(self, mode='human', height=None, width=None, camera_id=0, **kwargs):

@@ -1,12 +1,5 @@
 # `gym-dmc`, OpenAI Gym Plugin for DeepMind Control Suite
 
-Link to other OpenAI Gym Plugins:
-
-- `gym-sawyer`
-- `gym-toy-nav`
-
-
-
 ## Update Log
 - **2023-06-14**: Test gym (V0.21.0) compatibility, Embed gym_dmc into rl-baselines3-zoo (v1.8.0)
 - ========== ZZM Matain ↑ ==========
@@ -14,6 +7,15 @@ Link to other OpenAI Gym Plugins:
 - **2022-01-11**: Added a `env._get_obs()` method to allow one to obtain the observation after resetting the environment. **Version: `v0.2.1`**
 
 ## How To Use
+
+Install:
+```
+download https://github.com/TneitapSimHand/gym-dmc.git as zip
+
+pip install gym-dmc.zip
+```
+
+
 
 Usage pattern:
 
