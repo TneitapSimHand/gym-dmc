@@ -9,7 +9,7 @@ Link to other OpenAI Gym Plugins:
 
 ## Update Log
 - **2023-06-14**: Test gym (V0.21.0) compatibility, Embed gym_dmc into rl-baselines3-zoo (v1.8.0)
-===================ZZM Matain ↑=========================
+- ===================ZZM Matain ↑=========================
 - **2022-01-13**: Add space_dtype for overriding the dtype for the state and action spaces. Default to None, need to set to `float/np.float32` for pytorch_SAC implementation.
 - **2022-01-11**: Added a `env._get_obs()` method to allow one to obtain the observation after resetting the environment. **Version: `v0.2.1`**
 
