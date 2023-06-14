@@ -3,7 +3,7 @@ import numpy as np
 from dm_control import suite
 from dm_env import specs
 from gym import spaces
-
+import cv2 
 
 def convert_dm_control_to_gym_space(dm_control_space, dtype=None, **kwargs):
     """Convert dm_control space to gym space. """
@@ -43,8 +43,8 @@ class DMCEnv(gym.Env):
                  task_kwargs=None,
                  environment_kwargs=None,
                  visualize_reward=False,
-                 height=84,
-                 width=84,
+                 height=480,
+                 width=640,
                  camera_id=0,
                  frame_skip=1,
                  channels_first=True,
@@ -164,8 +164,10 @@ class DMCEnv(gym.Env):
             display(img)
             return img
         elif mode == 'human':
-            from PIL import Image
-            return Image.fromarray(img)
+            # from PIL import Image
+            # return Image.fromarray(img)
+            cv2.imshow("render_dmc",img[:, :, ::-1])
+            cv2.waitKey(2)
         else:
             raise NotImplementedError(f"`{mode}` mode is not implemented")
 

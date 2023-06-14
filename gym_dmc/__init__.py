@@ -32,8 +32,8 @@ for domain_name, task_name in suite.ALL_TASKS:
                  domain_name=domain_name,
                  task_name=task_name,
                  channels_first=True,
-                 width=84,
-                 height=84,
+                 width=640,
+                 height=480,
                  frame_skip=1),
              )
 
