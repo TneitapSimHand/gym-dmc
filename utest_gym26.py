@@ -27,6 +27,7 @@ if __name__ == "__main__":
     # dmc + mujoco (Deepmind)
     env_name = "Quadruped-walk-v1" #"Walker-stand-v1"
     env = gym.make(env_name, height=480, width=640, frame_skip=4, space_dtype=np.float32)
+    print("reorder observations: ", env.env.env.observation_space.keys())
 
     test_episode = 20
     for epi_i in range(test_episode):
