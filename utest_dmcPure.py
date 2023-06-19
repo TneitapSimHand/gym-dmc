@@ -20,11 +20,7 @@ class Policy:
 if __name__ == "__main__":
 
 
-
     env = suite.load("walker", "stand")
-
-    
-    
         
     poli = Policy(env)
 

@@ -3,7 +3,11 @@ import sys
 import numpy as np 
 import argparse
 import gym_dmc # env rigisteration
-from dm_control.suite import ALL_TASKS
+from dm_control import suite
+
+def get_all_envs():
+    for domain_name, task_name in suite.BENCHMARKING:
+        print(domain_name, task_name)
 
 assert gym.__version__ == '0.26.1', "Unmatched Gym version"
 assert gym_dmc.DMC_IS_REGISTERED, "dmc env has not been successfully registered"
@@ -12,7 +16,7 @@ print("========== Gym Standard Env ==========")
 print(*(gym.envs.registry.keys()), sep="\t")
 
 print("========== DMC mujoco Env ==========")
-print(*ALL_TASKS, sep="\t")
+print(*suite.ALL_TASKS, sep="\t")
 
 if __name__ == "__main__":
 
@@ -28,7 +32,8 @@ if __name__ == "__main__":
     env_name = "Quadruped-walk-v1" #"Walker-stand-v1"
     env = gym.make(env_name, height=480, width=640, frame_skip=4, space_dtype=np.float32)
     print("reorder observations: ", env.env.env.observation_space.keys())
-
+    print("gym wrapped obs dim: ", env.observation_space.shape)
+    print("gym wrapped act dim: ", env.action_space.shape)
     test_episode = 20
     for epi_i in range(test_episode):
         print("episode %02d"%(epi_i))
@@ -36,7 +41,7 @@ if __name__ == "__main__":
         obs, infos = env.reset()
         while not done: 
             action = np.random.randn(*env.action_space.shape) # random policy
-            obs, reward, done, trunc, infos = env.step(action)
+            obs, reward, done, trunc, infos = env.step(action) # gym26: 5 outs
             env.render()
             step_count +=1
             if done: print("ctrl step accu: ", step_count)
