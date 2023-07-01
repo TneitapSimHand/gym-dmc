@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # env = gym.make(env_name)
     
     env_name = "Humanoid-stand-v1" #"Walker-stand-v1" # "Quadruped-walk-v1"
-    env = gym.make(env_name, height=480, width=640, space_dtype=np.float32)
+    env = gym.make(env_name, height=480, width=640, space_dtype=np.float32, frame_skip=4)
     print("wrapper re-order observations: ", env.env.env.observation_space.keys())
     print("gym wrapped obs dim: ", env.observation_space.shape)
     print("gym wrapped act dim: ", env.action_space.shape)
