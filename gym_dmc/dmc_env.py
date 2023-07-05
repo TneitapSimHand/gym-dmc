@@ -8,9 +8,8 @@ import cv2
 def convert_dm_control_to_gym_space(dm_control_space, dtype=None, **kwargs):
     """Convert dm_control space to gym space. """
     if isinstance(dm_control_space, specs.BoundedArray):
-        space = spaces.Box(low=dm_control_space.minimum,
-                           high=dm_control_space.maximum,
-                           dtype=dtype or dm_control_space.dtype)
+        space = spaces.Box(low=dm_control_space.minimum.astype(dtype or dm_control_space.dtype),
+                           high=dm_control_space.maximum.astype(dtype or dm_control_space.dtype))
         assert space.shape == dm_control_space.shape
         return space
     elif isinstance(dm_control_space, specs.Array) and not isinstance(dm_control_space, specs.BoundedArray):
